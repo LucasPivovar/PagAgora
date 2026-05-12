@@ -1,20 +1,7 @@
 <template>
   <aside class="sidebar" :class="{ 'collapsed': isCollapsed }">
     <nav class="sidebar-nav py-4 font-outfit flex-1 overflow-y-auto overflow-x-hidden bg-[#0A0A0A] border-r border-dashed border-[#1A1A1A] transition-all duration-300 flex flex-col">
-      <!-- Goal Progress Section -->
-      <div v-show="!isCollapsed" class="px-7 mb-6 mt-2 transition-all duration-300">
-        <div class="flex justify-between items-center mb-2">
-          <span class="text-[10px] font-semibold text-gray-500 uppercase tracking-[0.2em]">Meta Mensal</span>
-          <span class="text-[10px] font-semibold text-[#D7FF00]">0%</span>
-        </div>
-        <div class="w-full bg-[#1A1A1A] h-1.5 rounded-full overflow-hidden mb-2 border border-[#222]">
-          <div class="bg-[#D7FF00] h-full rounded-full transition-all duration-500 shadow-[0_0_12px_rgba(215,255,0,0.3)]" style="width: 5%"></div>
-        </div>
-        <div class="text-[10px] font-medium text-gray-500 flex justify-between">
-          <span>R$ 0,00</span>
-          <span class="text-white">R$ 10.000,00</span>
-        </div>
-      </div>
+
 
       <div class="px-3 flex flex-col gap-8">
         <!-- New Principal Section for Users -->
