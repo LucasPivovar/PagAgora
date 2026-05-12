@@ -28,159 +28,32 @@
                 />
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Gerais Section -->
-        <div class="bg-[#0A0A0A] rounded-[15px] border border-[#1A1A1A] shadow-sm overflow-hidden">
-          <div class="px-6 py-3 bg-[#1A1A1A]/50 border-b border-[#1A1A1A]">
-            <h3 class="text-[12px] font-bold text-gray-500 uppercase tracking-widest">Gerais</h3>
-          </div>
-          <div class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-              <!-- Left side general inputs -->
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">Gateway Name</label>
-                  <input type="text" v-model="settings.gatewayName" class="w-full bg-[#0A0A0A] border border-[#1A1A1A] rounded-lg px-4 py-2.5 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#D7FF00] transition-all" />
-                </div>
-                <div class="flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">CNPJ</label>
-                  <input 
-                    type="text" 
-                    v-model="settings.cnpj" 
-                    @input="handleCNPJInput"
-                    placeholder="00.000.000/0000-00"
-                    maxlength="18"
-                    class="w-full bg-[#0A0A0A] border border-[#1A1A1A] rounded-lg px-4 py-2.5 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#D7FF00] transition-all" 
-                  />
-                </div>
-              </div>
-
-              <!-- Right side general inputs -->
-              <div class="flex flex-col gap-6">
-                <div class="flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">Cor padrão</label>
-                  <div class="flex items-center gap-2">
-                    <div 
-                      @click="$refs.colorInput.click()"
-                      class="w-12 h-12 rounded-xl border-2 border-[#1A1A1A] cursor-pointer p-1.5 hover:scale-105 active:scale-95 transition-all shadow-sm"
-                    >
-                      <div class="w-full h-full rounded-lg shadow-inner" :style="{ backgroundColor: settings.primaryColor }"></div>
-                    </div>
-                    <input type="color" ref="colorInput" v-model="settings.primaryColor" class="sr-only" />
+            <div class="border-t border-[#1A1A1A] mt-6 pt-6">
+               <h4 class="text-[12px] font-bold text-gray-500 mb-4 uppercase tracking-widest">Limite Mensal</h4>
+               <div class="flex flex-col gap-4 max-w-md">
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[11px] font-bold text-[white] ml-1">Pessoa Física</label>
+                    <input 
+                      type="text" 
+                      v-model="monthlyLimit.pf" 
+                      class="w-full bg-[#0A0A0A] border border-[#1A1A1A] rounded-lg px-4 py-2.5 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#D7FF00] transition-all"
+                    />
                   </div>
-                </div>
-                <div class="flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">Contato (Gerente)</label>
-                  <input 
-                    type="text" 
-                    v-model="settings.managerContact" 
-                    @input="handlePhoneInput"
-                    placeholder="+55 (00) 0 0000-0000"
-                    class="w-full bg-[#0A0A0A] border border-[#1A1A1A] rounded-lg px-4 py-2.5 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#D7FF00] transition-all" 
-                  />
-                </div>
-              </div>
-
-              <!-- Asset Uploads (Logo & Icon) -->
-              <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Logo -->
-                <div class="flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">Logo</label>
-                   <div class="border border-[#1A1A1A] rounded-xl overflow-hidden shadow-sm bg-[#1A1A1A]/30">
-                      <div v-if="previews.logo" class="px-4 py-2 bg-[#0A0A0A] border-b border-[#1A1A1A] flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                          <button @click="removeAsset('logo')" class="text-[#D7FF00] hover:scale-110 transition-all cursor-pointer">
-                            <X :size="16" stroke-width="3" />
-                          </button>
-                        </div>
-                      </div>
-                      <div 
-                        @click="triggerUpload('logo')"
-                        :class="[
-                          'flex items-center justify-center min-h-[180px] border-2 border-dashed border-[#1A1A1A] m-2 rounded-lg relative group transition-all hover:border-[#D7FF00] hover:bg-[#1A1A1A]/50 cursor-pointer overflow-hidden',
-                          previews.logo ? 'p-4 bg-[#0A0A0A]' : 'p-8 bg-[#0A0A0A]'
-                        ]"
-                      >
-                         <img v-if="previews.logo" :src="previews.logo" class="max-h-32 w-auto object-contain" alt="Logo" />
-                         <div v-else class="flex flex-col items-center gap-2 text-gray-500">
-                            <Plus :size="32" stroke-width="2" />
-                            <span class="text-[10px] font-black uppercase tracking-widest">Fazer Upload</span>
-                         </div>
-                         <div v-if="previews.logo" class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <Plus :size="24" class="text-[#D7FF00]" />
-                         </div>
-                         <input type="file" ref="logoInput" class="sr-only" accept="image/*" @change="e => prepareCrop(e, 'logo')" />
-                      </div>
-                   </div>
-                </div>
-
-                <!-- Icon -->
-                <div class="flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">Icone</label>
-                   <div class="border border-[#1A1A1A] rounded-xl overflow-hidden shadow-sm bg-[#1A1A1A]/30">
-                      <div v-if="previews.icon" class="px-4 py-2 bg-[#0A0A0A] border-b border-[#1A1A1A] flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                          <button @click="removeAsset('icon')" class="text-[#D7FF00] hover:scale-110 transition-all cursor-pointer">
-                            <X :size="16" stroke-width="3" />
-                          </button>
-                        </div>
-                      </div>
-                      <div 
-                        @click="triggerUpload('icon')"
-                        :class="[
-                          'flex items-center justify-center min-h-[180px] border-2 border-dashed border-[#1A1A1A] m-2 rounded-lg relative group transition-all hover:border-[#D7FF00] hover:bg-[#1A1A1A]/50 cursor-pointer overflow-hidden',
-                          previews.icon ? 'p-4 bg-[#0A0A0A]' : 'p-8 bg-[#0A0A0A]'
-                        ]"
-                      >
-                         <img v-if="previews.icon" :src="previews.icon" class="max-h-24 w-auto object-contain shadow-sm rounded-lg" alt="Icon" />
-                         <div v-else class="flex flex-col items-center gap-2 text-gray-500">
-                            <Plus :size="32" stroke-width="2" />
-                            <span class="text-[10px] font-black uppercase tracking-widest">Fazer Upload</span>
-                         </div>
-                         <div v-if="previews.icon" class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <Plus :size="24" class="text-[#D7FF00]" />
-                         </div>
-                         <input type="file" ref="iconInput" class="sr-only" accept="image/*" @change="e => prepareCrop(e, 'icon')" />
-                      </div>
-                   </div>
-                </div>
-
-                <!-- Banner Dashboard (Full Width) -->
-                <div class="md:col-span-2 flex flex-col gap-1.5">
-                  <label class="text-[11px] font-bold text-[white] ml-1">Banner Dashboard</label>
-                   <div class="border border-[#1A1A1A] rounded-xl overflow-hidden shadow-sm bg-[#1A1A1A]/30">
-                      <div v-if="previews.banner" class="px-4 py-2 bg-[#0A0A0A] border-b border-[#1A1A1A] flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                          <button @click="removeAsset('banner')" class="text-[#D7FF00] hover:scale-110 transition-all cursor-pointer">
-                            <X :size="16" stroke-width="3" />
-                          </button>
-                        </div>
-                      </div>
-                      <div 
-                        @click="triggerUpload('banner')"
-                        :class="[
-                          'm-2 rounded-lg border-2 border-dashed border-[#1A1A1A] overflow-hidden relative group transition-all hover:border-[#D7FF00] hover:bg-[#1A1A1A]/50 cursor-pointer flex items-center justify-center min-h-[160px]',
-                          previews.banner ? 'p-0 bg-[#0A0A0A]' : 'p-4 bg-[#0A0A0A]'
-                        ]"
-                      >
-                         <img v-if="previews.banner" :src="previews.banner" class="w-full h-auto max-h-[220px] object-contain rounded-lg shadow-sm" alt="Banner" />
-                         <div v-else class="flex flex-col items-center gap-2 text-gray-500">
-                            <Plus :size="32" stroke-width="2" />
-                            <span class="text-[10px] font-black uppercase tracking-widest">Fazer Upload</span>
-                         </div>
-                         <div v-if="previews.banner" class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <Plus :size="32" class="text-[#D7FF00]" />
-                         </div>
-                         <input type="file" ref="bannerInput" class="sr-only" accept="image/*" @change="e => prepareCrop(e, 'banner')" />
-                      </div>
-                   </div>
-                </div>
-              </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-[11px] font-bold text-[white] ml-1">Pessoa Jurídica</label>
+                    <input 
+                      type="text" 
+                      v-model="monthlyLimit.pj" 
+                      class="w-full bg-[#0A0A0A] border border-[#1A1A1A] rounded-lg px-4 py-2.5 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#D7FF00] transition-all"
+                    />
+                  </div>
+               </div>
             </div>
           </div>
         </div>
+
+
       </div>
 
       <!-- Footer Action (Relative at bottom) -->
@@ -195,29 +68,20 @@
       </div>
     </div>
 
-    <!-- Image Crop Modal -->
-    <ImageCropModal 
-      :show="showCropModal"
-      :imageSrc="cropImageSrc"
-      :aspectRatio="cropAspectRatio"
-      @cancel="showCropModal = false"
-      @confirm="onCropConfirm"
-    />
+
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from '../../components/AdminLayout.vue'
-import ImageCropModal from '../../components/modals/ImageCropModal.vue'
-import { Save, X, Plus } from 'lucide-vue-next'
+import { Save } from 'lucide-vue-next'
 import { useToast } from '../../composables/useToast'
 
 export default {
   name: 'SettingsGeneralView',
    components: {
     AdminLayout,
-    ImageCropModal,
-    Save, X, Plus
+    Save
   },
   setup() {
     const { showToast } = useToast()
@@ -236,9 +100,12 @@ export default {
         { label: 'Taxa Saque Fixa (R$)', value: '5' },
         { label: 'Taxa Baseline (R$)', value: '0.00' },
         { label: 'Depósito Mínimo', value: '1.00' },
-        { label: 'Saque Mínimo', value: '10.00' },
-        { label: 'Limite Mensal (P.F)', value: '100000.00' }
+        { label: 'Saque Mínimo', value: '10.00' }
       ],
+      monthlyLimit: {
+        pf: '100000.00',
+        pj: '500000.00'
+      },
       settings: {
         gatewayName: 'Compra Segura',
         primaryColor: '#00A86B',

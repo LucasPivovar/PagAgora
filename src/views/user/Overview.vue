@@ -9,7 +9,7 @@
 
       <!-- Top Stats Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
-        <div v-for="(card, index) in topCards" :key="index" class="bg-[#0A0A0A] p-5 rounded-[20px] shadow-sm border border-[#1A1A1A] flex justify-between items-start hover:shadow-md transition-all group">
+        <div v-for="(card, index) in topCards" :key="index" class="bg-[#D7FF00]/5 p-5 rounded-[20px] shadow-sm border border-[#D7FF00]/20 flex justify-between items-start hover:shadow-md hover:border-[#D7FF00]/40 transition-all group">
           <div class="flex flex-col gap-1">
             <div class="text-[22px] font-bold text-[white] tracking-tight leading-none">{{ card.value }}</div>
             <div class="text-[13px] text-gray-500 font-bold uppercase tracking-wider">{{ card.label }}</div>
@@ -60,9 +60,14 @@
           <h3 class="text-base font-bold text-[white]">Métricas</h3>
           <div class="flex flex-col gap-4">
             <div v-for="(metric, index) in metrics" :key="index" 
-                 class="p-5 rounded-2xl flex flex-col gap-1 transition-all hover:translate-x-1 border border-[#D7FF00]/20 bg-[#D7FF00]/5">
-              <span class="text-[12px] font-bold text-gray-500 uppercase tracking-wider">{{ metric.label }}</span>
-              <span class="text-[20px] font-bold text-[white]">{{ metric.value }}%</span>
+                 class="p-5 rounded-2xl flex justify-between items-center transition-all hover:translate-x-1 border border-[#D7FF00]/20 bg-[#D7FF00]/5 group">
+              <div class="flex flex-col gap-1 text-left">
+                  <span class="text-[12px] font-bold text-gray-500 uppercase tracking-wider">{{ metric.label }}</span>
+                  <span class="text-[20px] font-bold text-[white]">{{ metric.value }}%</span>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-[#D7FF00]/20 flex items-center justify-center text-[#D7FF00] transition-all group-hover:bg-[#D7FF00] group-hover:text-black">
+                <component :is="metric.icon" :size="18" stroke-width="2.5" />
+              </div>
             </div>
           </div>
         </div>
@@ -188,7 +193,7 @@
 import AdminLayout from '../../components/AdminLayout.vue'
 import { 
   DollarSign, TrendingUp, ShoppingCart, Ticket, 
-  CreditCard, LayoutDashboard, Globe
+  CreditCard, LayoutDashboard, Globe, AlertCircle, RotateCcw, ShieldAlert, Activity
 } from 'lucide-vue-next'
 
 export default {
@@ -221,10 +226,10 @@ export default {
         { name: 'Cartão', icon: CreditCard, approval: 0.0, value: 'R$ 0,00' }
       ],
       metrics: [
-        { label: 'Abandono C.', value: 0 },
-        { label: 'Reembolso', value: 0 },
-        { label: 'Charge Back', value: 0 },
-        { label: 'MED', value: 0 }
+        { label: 'Abandono C.', value: 0, icon: AlertCircle },
+        { label: 'Reembolso', value: 0, icon: RotateCcw },
+        { label: 'Charge Back', value: 0, icon: ShieldAlert },
+        { label: 'MED', value: 0, icon: Activity }
       ],
       recentSales: [
         { date: '07/01/2026', type: 'Pagamento recebido', value: 'R$ 5,00' },

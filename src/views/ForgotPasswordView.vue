@@ -1,17 +1,17 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-black font-outfit px-4 py-12">
-    <div class="max-w-md w-full">
+    <div class="max-w-[480px] w-full">
       <!-- Card -->
-      <div class="bg-[#0A0A0A] rounded-[20px] sm:rounded-[24px] shadow-sm border border-[#1A1A1A] p-6 sm:p-10 transition-all hover:shadow-md">
-        <!-- Logo Inside Card -->
+      <div class="bg-[#0A0A0A] rounded-[24px] shadow-sm border border-[#1A1A1A] p-8 sm:p-10 transition-all hover:shadow-md">
+        <!-- Top: Logo Centered -->
         <div class="flex justify-center mb-6 sm:mb-8">
           <img src="../assets/logo.png" alt="PagAgora" class="h-10 sm:h-12 w-auto object-contain" />
         </div>
 
         <div v-if="!isSubmitted">
-          <div class="mb-6 sm:mb-8 text-center text-left">
-            <h1 class="text-xl sm:text-2xl font-black text-white mb-1.5 sm:mb-2">Esqueceu sua senha?</h1>
-            <p class="text-[13px] sm:text-[15px] text-gray-500 font-medium leading-relaxed">Não se preocupe! Insira seu e-mail cadastrado e enviaremos as instruções para redefinir sua senha.</p>
+          <div class="mb-6 sm:mb-8 text-center flex flex-col items-center">
+            <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-1.5">Esqueceu sua senha?</h1>
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-gray-400 font-medium text-center">Não se preocupe! Insira seu e-mail cadastrado e enviaremos as instruções para redefinir sua senha.</p>
           </div>
 
           <form @submit.prevent="handleSubmit" class="space-y-6">
@@ -45,11 +45,11 @@
 
         <!-- Success State -->
         <div v-else class="text-center py-2 sm:py-4">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 bg-[#D7FF00]/10 text-[#D7FF00] rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
             <CheckCircle class="w-8 h-8 sm:w-10 sm:h-10" />
           </div>
-          <h2 class="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-3">E-mail enviado!</h2>
-          <p class="text-[13px] sm:text-[15px] text-gray-500 font-medium leading-relaxed mb-6 sm:mb-8">
+          <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2 sm:mb-3">E-mail enviado!</h2>
+          <p class="text-[13px] sm:text-[14px] leading-relaxed text-gray-400 font-medium mb-6 sm:mb-8">
             Enviamos um link de recuperação para <strong>{{ email }}</strong>. Por favor, verifique sua caixa de entrada e spam.
           </p>
           <button 
@@ -61,10 +61,10 @@
         </div>
 
         <!-- Back to Login -->
-        <div class="mt-6 sm:mt-8 text-center pt-5 sm:pt-6 border-t border-dashed border-[#1A1A1A]">
-          <router-link to="/login" class="inline-flex items-center gap-2 text-[#D7FF00] font-bold text-[14px] hover:gap-3 transition-all">
-            <ArrowLeft :size="18" />
-            Voltar para o login
+        <div class="flex items-center pt-6 mt-8 border-t border-dashed border-[#1A1A1A]">
+          <router-link to="/login" class="inline-flex items-center gap-2 text-gray-500 font-bold text-[13px] hover:text-gray-400 hover:gap-3 transition-all">
+            <ArrowLeft :size="16" />
+            Voltar ao login
           </router-link>
         </div>
       </div>

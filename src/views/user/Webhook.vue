@@ -8,21 +8,61 @@
 
       <div class="px-2 flex flex-col gap-6">
         <!-- Top Config Card -->
-        <div class="bg-[#0A0A0A] p-6 rounded-[20px] shadow-sm border border-[#1A1A1A]">
-           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-end">
+        <div class="bg-[#D7FF00]/5 p-6 rounded-[20px] shadow-sm border border-[#D7FF00]/20 flex flex-col gap-6 relative overflow-hidden group">
+           <div class="flex items-center gap-3 z-10">
+               <div class="w-10 h-10 rounded-full bg-[#D7FF00]/20 flex items-center justify-center text-[#D7FF00]">
+                   <WebhookIcon :size="20" stroke-width="2.5" />
+               </div>
+               <h3 class="text-base font-bold text-white">Configuração do Webhook</h3>
+           </div>
+           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-end z-10">
               <div class="lg:col-span-4 flex flex-col gap-2 font-bold">
                  <label class="text-[13px] text-[white] uppercase tracking-widest ml-1">Webhook URL</label>
-                 <input type="text" placeholder="Digite a URL do webhook" class="w-full px-5 py-2.5 bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl text-[14px] focus:outline-none focus:border-[#D7FF00] transition-all shadow-sm" />
+                 <input type="text" placeholder="Digite a URL do webhook" class="w-full px-5 py-2.5 bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl text-[14px] text-white focus:outline-none focus:border-[#D7FF00] transition-all shadow-sm" />
               </div>
               <div class="lg:col-span-5 flex flex-col gap-2 font-bold">
                  <label class="text-[13px] text-[white] uppercase tracking-widest ml-1">Eventos</label>
-                 <input type="text" placeholder="Selecione os eventos" class="w-full px-5 py-2.5 bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl text-[14px] focus:outline-none focus:border-[#D7FF00] transition-all shadow-sm" />
+                 <input type="text" placeholder="Selecione os eventos" class="w-full px-5 py-2.5 bg-[#0A0A0A] border border-[#1A1A1A] rounded-xl text-[14px] text-white focus:outline-none focus:border-[#D7FF00] transition-all shadow-sm" />
               </div>
               <div class="md:col-span-2 lg:col-span-3">
                  <button class="w-full py-3 bg-[#D7FF00] text-black font-bold rounded-xl hover:bg-[#E5FF4D] transition-all shadow-lg shadow-green-900/10">
                     Salvar
                  </button>
               </div>
+           </div>
+           <div class="absolute -right-6 -bottom-6 opacity-[0.03] text-[#D7FF00] pointer-events-none transform rotate-12 transition-all group-hover:rotate-0">
+              <WebhookIcon :size="120" />
+           </div>
+        </div>
+
+        <!-- Token Card -->
+        <div class="bg-[#0A0A0A] p-6 rounded-[20px] shadow-sm border border-[#1A1A1A] flex flex-col gap-4">
+           <div class="flex items-center justify-between">
+               <div class="flex items-center gap-3">
+                   <Key :size="20" class="text-[#D7FF00]" />
+                   <h3 class="text-base font-bold text-[white]">Tokens de API</h3>
+               </div>
+               <button class="px-6 py-2.5 bg-[#D7FF00] text-black font-bold text-[13px] rounded-xl hover:bg-[#E5FF4D] transition-all shadow-lg shadow-green-900/10 flex items-center gap-2">
+                   <Plus :size="16" stroke-width="3" />
+                   Gerar Novo Token
+               </button>
+           </div>
+           <p class="text-[13px] text-gray-500 font-medium max-w-2xl">Use tokens de API para autenticar requisições na nossa plataforma. Nunca compartilhe seus tokens publicamente.</p>
+           <div class="mt-2 border border-[#1A1A1A] rounded-xl overflow-hidden">
+               <div class="p-4 bg-[#1A1A1A]/30 flex justify-between items-center group">
+                   <div class="flex flex-col gap-1">
+                       <span class="text-[13px] font-bold text-white">Token Principal</span>
+                       <span class="text-[11px] text-gray-500 font-bold uppercase tracking-widest">sk_test_********************************</span>
+                   </div>
+                   <div class="flex gap-2">
+                       <button class="w-8 h-8 rounded-lg bg-[#0A0A0A] flex items-center justify-center text-gray-500 hover:text-[#D7FF00] transition-all border border-[#1A1A1A] hover:border-[#D7FF00]/30 shadow-sm">
+                           <Copy :size="14" />
+                       </button>
+                       <button class="w-8 h-8 rounded-lg bg-[#0A0A0A] flex items-center justify-center text-gray-500 hover:text-red-500 transition-all border border-[#1A1A1A] hover:border-red-500/30 shadow-sm">
+                           <Trash2 :size="14" />
+                       </button>
+                   </div>
+               </div>
            </div>
         </div>
 
@@ -59,12 +99,12 @@
 
 <script>
 import AdminLayout from '../../components/AdminLayout.vue'
-import { Send } from 'lucide-vue-next'
+import { Send, Webhook as WebhookIcon, Key, Plus, Copy, Trash2 } from 'lucide-vue-next'
 
 export default {
   name: 'UserWebhook',
   components: {
-    AdminLayout, Send
+    AdminLayout, Send, WebhookIcon, Key, Plus, Copy, Trash2
   },
   data() {
     return {

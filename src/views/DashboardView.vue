@@ -24,7 +24,7 @@
 
       <!-- Top Stats Grid (4 cards) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
-        <div v-for="(card, index) in topCards" :key="index" class="bg-[#0A0A0A] p-5 rounded-[20px] shadow-sm border border-[#1A1A1A] flex justify-between items-start hover:shadow-md transition-all">
+        <div v-for="(card, index) in topCards" :key="index" class="bg-[#D7FF00]/5 p-5 rounded-[20px] shadow-sm border border-[#D7FF00]/20 flex justify-between items-start hover:shadow-md hover:border-[#D7FF00]/40 transition-all group">
           <div class="text-left flex flex-col gap-1">
             <div class="text-[22px] font-bold text-white tracking-tight leading-none">{{ card.value }}</div>
             <div class="text-[13px] text-gray-500 font-bold uppercase tracking-wider">{{ card.label }}</div>
@@ -159,7 +159,7 @@
 
       <!-- Bottom Stats Grid (4 cards) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2 mb-8">
-        <div v-for="(card, index) in bottomCards" :key="index" class="bg-[#0A0A0A] p-5 rounded-[20px] shadow-sm border border-[#1A1A1A] flex justify-between items-start hover:shadow-md transition-all text-left">
+        <div v-for="(card, index) in bottomCards" :key="index" class="bg-[#D7FF00]/5 p-5 rounded-[20px] shadow-sm border border-[#D7FF00]/20 flex justify-between items-start hover:shadow-md hover:border-[#D7FF00]/40 transition-all group text-left">
           <div class="text-left flex flex-col gap-1">
             <div class="text-[22px] font-bold text-white tracking-tight leading-none text-left">{{ card.value }}</div>
             <div class="text-[13px] text-gray-500 font-bold uppercase tracking-wider text-left">{{ card.label }}</div>

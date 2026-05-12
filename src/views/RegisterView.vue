@@ -1,16 +1,16 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-black font-outfit px-4 py-12">
-    <div class="max-w-md w-full">
+    <div class="max-w-[480px] w-full">
       <!-- Card -->
-      <div class="bg-[#0A0A0A] rounded-[20px] sm:rounded-[24px] shadow-sm border border-[#1A1A1A] p-6 sm:p-10 transition-all hover:shadow-md">
-        <!-- Logo Inside Card -->
+      <div class="bg-[#0A0A0A] rounded-[24px] shadow-sm border border-[#1A1A1A] p-8 sm:p-10 transition-all hover:shadow-md">
+        <!-- Top: Logo Centered -->
         <div class="flex justify-center mb-6 sm:mb-8">
           <img src="../assets/logo.png" alt="PagAgora" class="h-10 sm:h-12 w-auto object-contain" />
         </div>
 
         <div class="mb-6 sm:mb-8 text-center">
-          <h1 class="text-xl sm:text-2xl font-black text-white mb-1.5 sm:mb-2">Crie sua conta</h1>
-          <p class="text-[13px] sm:text-[15px] leading-relaxed text-gray-500 font-medium">Comece a gerenciar suas vendas hoje mesmo</p>
+          <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-1.5">Crie sua conta</h1>
+          <p class="text-[13px] sm:text-[14px] leading-relaxed text-gray-400 font-medium">Comece a gerenciar suas vendas hoje mesmo</p>
         </div>
 
         <form @submit.prevent="handleRegister" class="space-y-5">

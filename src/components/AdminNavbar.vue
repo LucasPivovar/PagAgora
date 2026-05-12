@@ -20,6 +20,23 @@
       </div>
     </div>
 
+    <!-- Meta Mensal Header (Desktop Only) -->
+    <div class="hidden lg:flex flex-col flex-1 px-8 items-start">
+      <div class="w-full max-w-[200px] mt-1">
+        <div class="flex justify-between items-center mb-1.5">
+          <span class="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Meta Mensal</span>
+          <span class="text-[10px] font-black text-[#D7FF00]">5%</span>
+        </div>
+        <div class="w-full bg-[#1A1A1A] h-1.5 rounded-full overflow-hidden mb-1.5 border border-[#222]">
+          <div class="bg-[#D7FF00] h-full rounded-full transition-all duration-500 shadow-[0_0_12px_rgba(215,255,0,0.3)]" style="width: 5%"></div>
+        </div>
+        <div class="text-[10px] font-bold text-gray-500 flex justify-between">
+          <span>R$ 0,00</span>
+          <span class="text-white">R$ 10.000,00</span>
+        </div>
+      </div>
+    </div>
+
     <div class="navbar-right flex items-center gap-2 pr-4 sm:pr-8">
       <!-- Notification Button -->
       <button 

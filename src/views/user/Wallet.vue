@@ -8,7 +8,7 @@
 
       <!-- Balance Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-2">
-        <div class="bg-[#0A0A0A] p-8 rounded-[20px] shadow-sm border border-[#1A1A1A] flex flex-col gap-6 relative overflow-hidden group">
+        <div class="bg-[#D7FF00]/5 p-8 rounded-[20px] shadow-sm border border-[#D7FF00]/20 hover:border-[#D7FF00]/40 transition-all flex flex-col gap-6 relative overflow-hidden group">
           <div class="flex justify-between items-start z-10">
             <div class="flex flex-col gap-1">
               <span class="text-[13px] text-gray-500 font-bold uppercase tracking-widest">Saldo Disponível</span>
@@ -32,7 +32,7 @@
           </div>
         </div>
 
-        <div class="bg-[#0A0A0A] p-8 rounded-[20px] shadow-sm border border-[#1A1A1A] flex flex-col gap-6 relative overflow-hidden group">
+        <div class="bg-[#D7FF00]/5 p-8 rounded-[20px] shadow-sm border border-[#D7FF00]/20 hover:border-[#D7FF00]/40 transition-all flex flex-col gap-6 relative overflow-hidden group">
           <div class="flex justify-between items-start z-10">
             <div class="flex flex-col gap-1">
               <span class="text-[13px] text-gray-500 font-bold uppercase tracking-widest">Saldo Pendente</span>

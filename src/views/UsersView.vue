@@ -25,12 +25,12 @@
 
       <!-- KPI Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2 sm:px-6">
-        <div v-for="(kpi, index) in kpis" :key="index" class="bg-[#0A0A0A] p-6 rounded-[20px] shadow-sm border border-[#1A1A1A] border-l-4 border-l-[#D7FF00] flex justify-between items-start transition-all hover:scale-[1.02]">
+        <div v-for="(kpi, index) in kpis" :key="index" class="bg-[#D7FF00]/5 p-6 rounded-[20px] shadow-sm border border-[#D7FF00]/20 flex justify-between items-start hover:shadow-md hover:border-[#D7FF00]/40 transition-all group">
           <div class="text-left font-outfit">
             <div class="text-2xl font-black text-[white]">{{ kpi.value }}</div>
             <div class="text-[12px] text-gray-500 font-bold uppercase tracking-wider">{{ kpi.label }}</div>
           </div>
-          <div class="w-10 h-10 rounded-full bg-[#D7FF00]/10 flex items-center justify-center text-[#D7FF00] flex-shrink-0 border border-[#D7FF00]/20">
+          <div class="w-10 h-10 rounded-full bg-[#D7FF00]/10 flex items-center justify-center text-[#D7FF00] flex-shrink-0 transition-all group-hover:bg-[#D7FF00] group-hover:text-black">
             <component :is="kpi.icon" :size="18" stroke-width="2.5" />
           </div>
         </div>

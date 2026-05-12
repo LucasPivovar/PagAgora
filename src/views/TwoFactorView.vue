@@ -1,26 +1,27 @@
 <template>
   <div class="min-h-screen flex items-center justify-center bg-black font-outfit px-4 py-12">
-    <div class="max-w-md w-full">
+    <div class="max-w-[480px] w-full">
       <!-- Card -->
-      <div class="bg-[#0A0A0A] rounded-[20px] sm:rounded-[24px] shadow-sm border border-[#1A1A1A] p-6 sm:p-10 transition-all hover:shadow-md">
-        <!-- Logo Inside Card -->
+      <div class="bg-[#0A0A0A] rounded-[24px] shadow-sm border border-[#1A1A1A] p-8 sm:p-10 transition-all hover:shadow-md">
+        <!-- Top: Logo Centered -->
         <div class="flex justify-center mb-6 sm:mb-8">
           <img src="../assets/logo.png" alt="PagAgora" class="h-10 sm:h-12 w-auto object-contain" />
         </div>
 
-        <div class="mb-6 sm:mb-8 text-center">
-          <h1 class="text-xl sm:text-2xl font-black text-white mb-1.5 sm:mb-2">Autenticação de Dois Fatores</h1>
-          <p class="text-[13px] sm:text-[15px] leading-relaxed text-gray-500 font-medium">
-            Digite o código de 6 dígitos gerado pelo seu <br class="hidden sm:block"/>
-            aplicativo autenticador ou enviado por e-mail.
+        <div class="flex flex-col items-center gap-3 mb-6 sm:mb-8 text-center">
+          <div class="w-12 h-12 rounded-xl bg-[#D7FF00]/10 flex items-center justify-center text-[#D7FF00]">
+            <ShieldCheck :size="24" stroke-width="2" />
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Autenticação de 2 Fatores</h1>
+          <p class="text-[13px] sm:text-[14px] leading-relaxed text-gray-400 font-medium mt-1">
+            Digite o código de 6 dígitos gerado pelo seu aplicativo autenticador ou enviado por e-mail.
           </p>
         </div>
 
         <form @submit.prevent="handleVerify" class="space-y-6">
           <!-- Code Fields -->
           <div class="space-y-3 mb-8">
-            <label class="block text-sm font-bold text-white text-center">Código de Verificação</label>
-            <div class="flex justify-center gap-2 sm:gap-3">
+            <div class="flex justify-between gap-2 sm:gap-3">
               <input 
                 v-for="(digit, index) in code" 
                 :key="index"
@@ -28,7 +29,7 @@
                 v-model="code[index]"
                 type="text" 
                 maxlength="1"
-                class="w-11 h-12 sm:w-12 sm:h-14 text-center font-outfit text-xl sm:text-2xl font-bold bg-[#1A1A1A] border border-[#1A1A1A] rounded-xl focus:outline-none focus:border-[#D7FF00] focus:bg-[#0A0A0A] focus:ring-2 focus:ring-[#D7FF00]/10 transition-all shadow-sm text-white"
+                class="w-full aspect-square text-center font-outfit text-xl sm:text-2xl font-bold bg-[#1A1A1A]/50 border border-[#1A1A1A] rounded-xl focus:outline-none focus:border-[#D7FF00] focus:bg-[#0A0A0A] focus:ring-2 focus:ring-[#D7FF00]/10 transition-all shadow-sm text-white"
                 @input="handleInput($event, index)"
                 @keydown.delete="handleDelete($event, index)"
                 @paste="handlePaste"
@@ -47,14 +48,13 @@
           </button>
         </form>
 
-        <div class="mt-6 sm:mt-8 text-center pt-5 sm:pt-6 border-t border-dashed border-[#1A1A1A]">
-          <p class="text-[13px] sm:text-sm text-gray-500 font-medium mb-4">
-            Não conseguiu o código? 
-            <button class="text-[#D7FF00] font-bold hover:underline cursor-pointer">Reenviar</button>
-          </p>
-          <router-link to="/login" class="inline-flex items-center gap-2 text-gray-500 font-bold text-[13px] hover:text-gray-600 hover:gap-3 transition-all">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-dashed border-[#1A1A1A]">
+          <button class="text-[#D7FF00] font-bold text-[13px] hover:underline cursor-pointer order-1 sm:order-2">
+            Reenviar Código
+          </button>
+          <router-link to="/login" class="inline-flex items-center gap-2 text-gray-500 font-bold text-[13px] hover:text-gray-400 transition-all order-2 sm:order-1">
             <ArrowLeft :size="16" />
-            Voltar para o login
+            Voltar ao login
           </router-link>
         </div>
       </div>
@@ -63,14 +63,15 @@
 </template>
 
 <script>
-import { Loader2, ArrowLeft } from 'lucide-vue-next'
+import { Loader2, ArrowLeft, ShieldCheck } from 'lucide-vue-next'
 import { useToast } from '../composables/useToast'
 
 export default {
   name: 'TwoFactorView',
   components: {
     Loader2,
-    ArrowLeft
+    ArrowLeft,
+    ShieldCheck
   },
   setup() {
     const { showToast } = useToast()

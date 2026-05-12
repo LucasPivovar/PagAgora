@@ -79,6 +79,30 @@ const routes = [
     component: () => import('../views/TwoFactorView.vue'),
     meta: { title: '2FA' }
   },
+  {
+    path: '/email-confirmation',
+    name: 'EmailConfirmation',
+    component: () => import('../views/EmailConfirmationView.vue'),
+    meta: { title: 'Confirmação de E-mail' }
+  },
+  {
+    path: '/phone-confirmation',
+    name: 'PhoneConfirmation',
+    component: () => import('../views/PhoneConfirmationView.vue'),
+    meta: { title: 'Confirmação de Telefone' }
+  },
+  {
+    path: '/account-analysis',
+    name: 'AccountAnalysis',
+    component: () => import('../views/AccountUnderAnalysisView.vue'),
+    meta: { title: 'Conta em Análise' }
+  },
+  {
+    path: '/kyc',
+    name: 'KYC',
+    component: () => import('../views/KYCView.vue'),
+    meta: { title: 'Processo KYC' }
+  },
   // User Routes
   {
     path: '/dashboard',

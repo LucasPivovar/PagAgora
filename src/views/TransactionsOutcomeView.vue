@@ -29,12 +29,12 @@
       <div class="flex flex-col gap-8">
         <!-- Top KPI Cards Row 1 -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-2">
-          <div v-for="kpi in kpisRow1" :key="kpi.label" class="bg-[#0A0A0A] p-5 rounded-[20px] border border-[#1A1A1A] border-l-4 border-l-[#991b1b] flex justify-between items-center shadow-sm">
+          <div v-for="kpi in kpisRow1" :key="kpi.label" class="bg-[#D7FF00]/5 p-5 rounded-[20px] border border-[#D7FF00]/20 flex justify-between items-center shadow-sm hover:border-[#D7FF00]/40 transition-all group">
             <div class="flex flex-col">
               <div class="text-[24px] font-black text-[white]">{{ kpi.value }}</div>
-              <div class="text-[12px] text-gray-500 font-bold">{{ kpi.label }}</div>
+              <div class="text-[12px] text-gray-500 font-bold uppercase tracking-wider">{{ kpi.label }}</div>
             </div>
-            <div class="w-10 h-10 rounded-full bg-[#fee2e2] flex items-center justify-center text-[#991b1b]">
+            <div class="w-10 h-10 rounded-full bg-[#D7FF00]/10 flex items-center justify-center text-[#D7FF00] transition-all group-hover:bg-[#D7FF00] group-hover:text-black">
               <component :is="kpi.icon" :size="20" stroke-width="3" />
             </div>
           </div>
@@ -42,12 +42,12 @@
 
         <!-- Top KPI Cards Row 2 -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-2">
-          <div v-for="kpi in kpisRow2" :key="kpi.label" class="bg-[#0A0A0A] p-5 rounded-[20px] border border-[#1A1A1A] border-l-4 border-l-[#991b1b] flex justify-between items-center shadow-sm h-[110px]">
+          <div v-for="kpi in kpisRow2" :key="kpi.label" class="bg-[#D7FF00]/5 p-5 rounded-[20px] border border-[#D7FF00]/20 flex justify-between items-center shadow-sm h-[110px] hover:border-[#D7FF00]/40 transition-all group">
             <div class="flex flex-col">
               <div class="text-[24px] font-black text-[white]">R$ {{ kpi.value.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) }}</div>
-              <div class="text-[12px] text-gray-500 font-bold">{{ kpi.label }}</div>
+              <div class="text-[12px] text-gray-500 font-bold uppercase tracking-wider">{{ kpi.label }}</div>
             </div>
-            <div class="w-10 h-10 rounded-full bg-[#fee2e2] flex items-center justify-center text-[#991b1b]">
+            <div class="w-10 h-10 rounded-full bg-[#D7FF00]/10 flex items-center justify-center text-[#D7FF00] transition-all group-hover:bg-[#D7FF00] group-hover:text-black">
               <ArrowUpRight :size="20" stroke-width="3" />
             </div>
           </div>
